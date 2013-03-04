@@ -287,7 +287,7 @@ class PreparedRequest(RequestEncodingMixin, RequestHooksMixin):
             raise MissingSchema("Invalid URL %r: No schema supplied" % url)
 
         try:
-            netloc = netloc.encode('idna').decode('utf-8')
+            netloc = netloc.encode('utf-8').decode('utf-8')
         except UnicodeError:
             raise InvalidURL('URL has an invalid label.')
 

@@ -357,7 +357,7 @@ def stream_decompress(iterator, mode='gzip'):
     if mode not in ['gzip', 'deflate']:
         raise ValueError('stream_decompress mode must be gzip or deflate')
 
-    zlib_mode = 16 + zlib.MAX_WBITS if mode == 'gzip' else -zlib.MAX_WBITS
+    zlib_mode = zlib.MAX_WBITS if mode == 'gzip' else -zlib.MAX_WBITS
     dec = zlib.decompressobj(zlib_mode)
     try:
         for chunk in iterator:
